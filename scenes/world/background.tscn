@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=3 uid="uid://bw642bcenrpec"]
+
+[ext_resource type="Shader" path="res://src/background/background.gdshader" id="1_psuer"]
+[ext_resource type="Script" path="res://src/background/bg.gd" id="2_rnl60"]
+
+[sub_resource type="Gradient" id="Gradient_ajveq"]
+offsets = PackedFloat32Array(0.514754, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6lnkm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b2b32"]
+seamless = true
+seamless_blend_skirt = 0.5
+color_ramp = SubResource("Gradient_ajveq")
+noise = SubResource("FastNoiseLite_6lnkm")
+
+[sub_resource type="Gradient" id="Gradient_byb1n"]
+offsets = PackedFloat32Array(0.816393, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r5mnn"]
+frequency = 0.0425
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2gn6d"]
+seamless = true
+seamless_blend_skirt = 0.5
+color_ramp = SubResource("Gradient_byb1n")
+noise = SubResource("FastNoiseLite_r5mnn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2gol"]
+shader = ExtResource("1_psuer")
+shader_parameter/time = null
+shader_parameter/noiseStars = SubResource("NoiseTexture2D_2gn6d")
+shader_parameter/noiseClouds = SubResource("NoiseTexture2D_b2b32")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p15oy"]
+shader = ExtResource("1_psuer")
+shader_parameter/time = null
+shader_parameter/noiseStars = SubResource("NoiseTexture2D_2gn6d")
+shader_parameter/noiseClouds = SubResource("NoiseTexture2D_b2b32")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_82om4"]
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+material = SubResource("ShaderMaterial_c2gol")
+motion_mirroring = Vector2(640, 360)
+
+[node name="1" type="Sprite2D" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_p15oy")
+scale = Vector2(640, 360)
+texture = SubResource("CanvasTexture_82om4")
+centered = false
+script = ExtResource("2_rnl60")

@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://csy8rc16uv3ke"]
+
+[ext_resource type="Texture2D" uid="uid://b05ercwm0bxea" path="res://assets/icon/icon.png" id="1_fgifd"]
+[ext_resource type="Script" path="res://src/ui/hud.gd" id="1_jtiv3"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_jtiv3")
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_fgifd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HealthContainer" type="MarginContainer" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="MaxHealth" type="ColorRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/HealthContainer"]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Health" type="ColorRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/HealthContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0.487756, 1.02879e-06, 3.36915e-07, 1)
+
+[node name="ManaContainer" type="MarginContainer" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="MaxMana" type="ColorRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/ManaContainer"]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="Mana" type="ColorRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/ManaContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0.00110537, 0.0739522, 0.414841, 1)
+
+[node name="StaminaContainer" type="MarginContainer" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 3
+
+[node name="MaxStamina" type="ColorRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/StaminaContainer"]
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="Stamina" type="ColorRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/StaminaContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 0.303612, 9.62615e-08, 1)
